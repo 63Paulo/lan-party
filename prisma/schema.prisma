@@ -1,0 +1,55 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+// Game model - represents a video game available at the LAN party
+model Game {
+  id          Int      @id @default(autoincrement())
+  name        String
+  genre       String
+  releaseYear Int?
+  minPlayers  Int
+  maxPlayers  Int
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// Station model - represents a gaming station with its specs
+model Station {
+  id          Int      @id @default(autoincrement())
+  name        String
+  // Specs stored as JSON string (SQLite doesn't support native JSON)
+  cpu         String
+  gpu         String
+  ram         String
+  storage     String
+  // Peripherals
+  monitor     String
+  keyboard    String
+  mouse       String
+  headset     String
+  // Status: available, maintenance, booked
+  status      String   @default("available")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// User model - represents a participant at the LAN party
+model User {
+  id        Int      @id @default(autoincrement())
+  username  String   @unique
+  email     String   @unique
+  password  String
+  role      String   @default("user")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

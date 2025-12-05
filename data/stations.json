@@ -1,0 +1,87 @@
+[
+  {
+    "name": "Gaming Station Alpha Updated",
+    "specs": {
+      "cpu": "Intel Core i9-14900KS",
+      "gpu": "NVIDIA RTX 4090 Ti",
+      "ram": "64GB DDR5",
+      "storage": "4TB NVMe SSD"
+    },
+    "peripherals": {
+      "monitor": "ASUS ROG Swift 32\" 360Hz",
+      "keyboard": "Corsair K100",
+      "mouse": "Logitech G Pro X2",
+      "headset": "SteelSeries Arctis Nova Pro"
+    },
+    "status": "maintenance",
+    "id": 1
+  },
+  {
+    "id": 2,
+    "name": "Gaming Station Beta",
+    "specs": {
+      "cpu": "AMD Ryzen 9 7950X",
+      "gpu": "NVIDIA RTX 4080",
+      "ram": "32GB DDR5",
+      "storage": "1TB NVMe SSD"
+    },
+    "peripherals": {
+      "monitor": "LG UltraGear 27\" 165Hz",
+      "keyboard": "Razer BlackWidow V3",
+      "mouse": "Razer DeathAdder V3",
+      "headset": "HyperX Cloud Alpha"
+    },
+    "status": "available"
+  },
+  {
+    "id": 3,
+    "name": "Gaming Station Gamma",
+    "specs": {
+      "cpu": "Intel Core i7-13700K",
+      "gpu": "NVIDIA RTX 4070 Ti",
+      "ram": "16GB DDR5",
+      "storage": "1TB NVMe SSD"
+    },
+    "peripherals": {
+      "monitor": "BenQ Zowie 24\" 144Hz",
+      "keyboard": "Logitech G915 TKL",
+      "mouse": "Glorious Model O",
+      "headset": "Corsair HS80 RGB"
+    },
+    "status": "booked"
+  },
+  {
+    "id": 4,
+    "name": "Gaming Station Delta",
+    "specs": {
+      "cpu": "AMD Ryzen 7 7800X3D",
+      "gpu": "AMD Radeon RX 7900 XT",
+      "ram": "32GB DDR5",
+      "storage": "2TB NVMe SSD"
+    },
+    "peripherals": {
+      "monitor": "Samsung Odyssey G7 32\" 240Hz",
+      "keyboard": "SteelSeries Apex Pro",
+      "mouse": "Finalmouse Ultralight 2",
+      "headset": "Astro A50 Wireless"
+    },
+    "status": "maintenance"
+  },
+  {
+    "id": 5,
+    "name": "Gaming Station Epsilon",
+    "specs": {
+      "cpu": "Intel Core i5-13600K",
+      "gpu": "NVIDIA RTX 4060 Ti",
+      "ram": "16GB DDR4",
+      "storage": "512GB NVMe SSD"
+    },
+    "peripherals": {
+      "monitor": "AOC 24G2 24\" 144Hz",
+      "keyboard": "HyperX Alloy Origins",
+      "mouse": "SteelSeries Rival 3",
+      "headset": "Logitech G Pro X"
+    },
+    "status": "available"
+  }
+]
