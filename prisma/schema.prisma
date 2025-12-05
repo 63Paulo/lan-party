@@ -41,6 +41,7 @@ model Station {
   status      String   @default("available")
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+  bookings    Booking[]
 }
 
 // User model - represents a participant at the LAN party
@@ -52,4 +53,18 @@ model User {
   role      String   @default("user")
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  bookings  Booking[]
+}
+
+model Booking {
+  id         Int      @id @default(autoincrement())
+  startTime  DateTime
+  endTime    DateTime
+  status    String   @default("confirmed")
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  userId    Int
+  stationId Int
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  station   Station  @relation(fields: [stationId], references: [id], onDelete: Cascade)
 }

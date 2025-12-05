@@ -36,7 +36,7 @@ const games = [
   },
 ]
 
-const stations = [
+const stationsData = [
   {
     name: 'Gaming Station Alpha',
     cpu: 'Intel Core i9-14900KS',
@@ -101,11 +101,9 @@ const stations = [
 
 async function main() {
   console.log('Seeding database...')
-
-  // Hash password for users
   const hashedPassword = await bcrypt.hash('P@ssw0rd', 10)
 
-  const users = [
+  const usersData = [
     {
       username: 'admin',
       email: 'admin@lanparty.com',
@@ -132,22 +130,48 @@ async function main() {
     },
   ]
 
-  // Clear existing data
+  await prisma.booking.deleteMany()
   await prisma.game.deleteMany()
   await prisma.station.deleteMany()
   await prisma.user.deleteMany()
 
-  // Insert games (batch insert)
   await prisma.game.createMany({ data: games })
-  console.log(`Created ${games.length} games`)
+  await prisma.station.createMany({ data: stationsData })
+  await prisma.user.createMany({ data: usersData })
 
-  // Insert stations (batch insert)
-  await prisma.station.createMany({ data: stations })
-  console.log(`Created ${stations.length} stations`)
+  console.log('Games, Stations, Users created.')
 
-  // Insert users (batch insert)
-  await prisma.user.createMany({ data: users })
-  console.log(`Created ${users.length} users (password: P@ssw0rd)`)
+  const allUsers = await prisma.user.findMany()
+  const allStations = await prisma.station.findMany()
+
+  const now = new Date()
+
+  const bookings = [
+    {
+      startTime: new Date(now.getTime() + 2 * 60 * 60 * 1000),
+      endTime: new Date(now.getTime() + 3 * 60 * 60 * 1000),
+      status: "confirmed",
+      userId: allUsers[1].id,
+      stationId: allStations[0].id,
+    },
+    {
+      startTime: new Date(now.getTime() - 1 * 60 * 60 * 1000),
+      endTime: new Date(now.getTime() + 1 * 60 * 60 * 1000),
+      status: "confirmed",
+      userId: allUsers[2].id,
+      stationId: allStations[1].id,
+    },
+    {
+      startTime: new Date(now.getTime() + 24 * 60 * 60 * 1000),
+      endTime: new Date(now.getTime() + 25 * 60 * 60 * 1000),
+      status: "confirmed",
+      userId: allUsers[3].id,
+      stationId: allStations[2].id,
+    },
+  ]
+
+  await prisma.booking.createMany({ data: bookings })
+  console.log('Bookings created.')
 
   console.log('Seeding completed!')
 }
